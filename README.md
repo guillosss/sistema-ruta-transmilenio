@@ -51,24 +51,6 @@ Calle 63, Calle 57, Marly, Calle 45, Universidad Nacional, NQS - Calle 30.
 > que es justamente el punto de usar búsqueda heurística en vez de listar
 > la ruta "obvia" a mano.
 
-## Estructura del código (para la exposición)
 
-1. `ESTACIONES` — base de conocimiento: posición aproximada de cada
-   estación (usada solo para calcular la heurística).
-2. `CONEXIONES_BASE` / `construir_grafo()` — base de conocimiento: qué
-   estaciones están unidas directamente y el costo (minutos) de ese tramo.
-3. `heuristica()` — estima cuánto falta para llegar al destino (distancia
-   en línea recta, escalada para que nunca sobreestime el costo real).
-4. `busqueda_a_estrella()` — el algoritmo A* (búsqueda heurística) en sí.
-5. `main()` / `pedir_estacion()` / `mostrar_resultado()` — interfaz de
-   consola: pide origen y destino, y muestra el resultado formateado.
 
-## Nota sobre la heurística (para Integrante 3)
 
-La heurística usada es la **distancia en línea recta** entre dos
-estaciones, dividida por la velocidad máxima observada en el grafo. Esto
-la hace "admisible" (nunca sobreestima el costo real que falta), que es
-la condición que garantiza que A* siempre encuentre la ruta óptima. Se
-verificó comparando A* contra el algoritmo de Dijkstra (fuerza bruta)
-para las 156 combinaciones posibles de origen-destino del grafo: los
-resultados coinciden en el 100% de los casos.
